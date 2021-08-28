@@ -23,22 +23,6 @@ public class Product {
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
     @Deprecated
     public Product() {
     }
@@ -54,6 +38,22 @@ public class Product {
         this.name = Objects.requireNonNull(name);
         this.price = Objects.requireNonNull(price);
         this.description = Objects.requireNonNull(description);
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     @Override

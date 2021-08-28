@@ -2,6 +2,9 @@ package br.com.felipemaxplay.products.http;
 
 import br.com.felipemaxplay.products.http.data.request.ProductRequestDto;
 import br.com.felipemaxplay.products.model.Product;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.github.fge.jsonpatch.JsonPatch;
+import com.github.fge.jsonpatch.JsonPatchException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -37,4 +40,14 @@ public interface ProductController {
     })
     @GetMapping(path ="/{id}")
     Product readOne(@PathVariable(name = "id") Long id);
+
+    @PatchMapping("/{id}")
+    Product update(@PathVariable(name = "id") Long id, @RequestBody JsonPatch patch) throws JsonPatchException, JsonProcessingException;
+
+    @PutMapping("/{id}")
+    Product updateAll(@PathVariable(name = "id") Long id, @RequestBody ProductRequestDto dto);
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void delete(@PathVariable("id") Long id);
 }

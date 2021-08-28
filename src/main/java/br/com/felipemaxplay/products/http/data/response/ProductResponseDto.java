@@ -5,10 +5,12 @@ import java.math.BigDecimal;
 public class ProductResponseDto {
 
     private String name;
-
     private BigDecimal price;
-
     private String description;
+
+    @Deprecated
+    public ProductResponseDto() {
+    }
 
     public String getName() {
         return name;
