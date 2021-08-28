@@ -12,16 +12,16 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
 
     @Column(name = "NAME", nullable = false)
-    String name;
+    private String name;
 
     @Column(name = "PRICE", nullable = false)
-    BigDecimal price;
+    private BigDecimal price;
 
     @Column(name = "DESCRIPTION", nullable = false)
-    String description;
+    private String description;
 
     public Long getId() {
         return id;
