@@ -1,7 +1,10 @@
 package br.com.felipemaxplay.products.http.data.response;
 
 import org.springframework.lang.NonNull;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 public class Error {
@@ -10,10 +13,12 @@ public class Error {
     private final String message;
     private final String documentation;
 
-    public Error(@NonNull String code, @NonNull String message) {
+    public Error(@NonNull String code, @NonNull String message, @NonNull String urlDocumentation) {
         this.code = Objects.requireNonNull(code);
         this.message = Objects.requireNonNull(message);
-        this.documentation = "";
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        String url = request.getRequestURL().toString().replace(request.getRequestURI(), "");
+        this.documentation = url + urlDocumentation;
     }
 
     public String getCode() {

@@ -25,7 +25,7 @@ public class ProductServiceImpl  implements ProductService {
     @Override
     public Product readOne(Long id) {
         return productRepository.findById(id)
-                .orElseThrow(() -> new NoResultException(String.format("Product with id %d not found", id)));
+                .orElseThrow(() -> new NoResultException(String.format("Product with ID %d not found", id)));
     }
 
     @Override
