@@ -5,6 +5,8 @@ import br.com.felipemaxplay.products.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.NoResultException;
+
 @Service
 public class ProductServiceImpl  implements ProductService {
 
@@ -21,8 +23,9 @@ public class ProductServiceImpl  implements ProductService {
     }
 
     @Override
-    public Product read(Long id) {
-        return null;
+    public Product readOne(Long id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new NoResultException(String.format("Product with id %d not found", id)));
     }
 
     @Override

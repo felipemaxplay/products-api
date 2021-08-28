@@ -1,5 +1,6 @@
 package br.com.felipemaxplay.products.http.data.request;
 
+import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 
 public class ProductRequestDto {

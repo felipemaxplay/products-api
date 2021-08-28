@@ -39,6 +39,7 @@ public class Product {
         return description;
     }
 
+    @Deprecated
     public Product() {
     }
 
