@@ -4,10 +4,7 @@ import br.com.felipemaxplay.products.model.Product;
 import br.com.felipemaxplay.products.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/Product")
@@ -21,7 +18,7 @@ public class ProductControllerImpl implements ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    Product create(Product product) {
+    Product create(@RequestBody Product product) {
         return productService.create(product);
     }
 }
