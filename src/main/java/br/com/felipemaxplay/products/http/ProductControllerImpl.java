@@ -21,11 +21,12 @@ public class ProductControllerImpl implements ProductController {
     @Override
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Product create(@RequestBody ProductRequestDto dto) {
+    public Product create(@Valid @RequestBody ProductRequestDto dto) {
         Product product = new Product(dto.getName(), dto.getPrice(), dto.getDescription());
         return productService.create(product);
     }
 
+    @Override
     @GetMapping(path ="/{id}")
     public Product readOne(@PathVariable(name = "id") Long id) {
         return productService.readOne(id);
