@@ -1,5 +1,7 @@
 package br.com.felipemaxplay.products.model;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -12,13 +14,13 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = false)
     String name;
 
-    @Column(name = "PRICE")
+    @Column(name = "PRICE", nullable = false)
     BigDecimal price;
 
-    @Column(name = "DESCRIPTION")
+    @Column(name = "DESCRIPTION", nullable = false)
     String description;
 
     public Long getId() {
@@ -40,17 +42,17 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, BigDecimal price, String description) {
-        this.name = name;
-        this.price = price;
-        this.description = description;
+    public Product(@NonNull String name, @NonNull BigDecimal price, @NonNull String description) {
+        this.name = Objects.requireNonNull(name);
+        this.price = Objects.requireNonNull(price);
+        this.description = Objects.requireNonNull(description);
     }
 
-    public Product(Long id, String name, BigDecimal price, String description) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.description = description;
+    public Product(@NonNull Long id, @NonNull String name, @NonNull BigDecimal price, @NonNull String description) {
+        this.id = Objects.requireNonNull(id);
+        this.name = Objects.requireNonNull(name);
+        this.price = Objects.requireNonNull(price);
+        this.description = Objects.requireNonNull(description);
     }
 
     @Override
