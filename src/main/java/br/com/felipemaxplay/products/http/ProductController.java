@@ -41,12 +41,15 @@ public interface ProductController {
     @GetMapping(path ="/{id}")
     Product readOne(@PathVariable(name = "id") Long id);
 
+    @Operation(summary = "Update only one parameter at a time for a product with the corresponding ID.")
     @PatchMapping("/{id}")
     Product update(@PathVariable(name = "id") Long id, @RequestBody JsonPatch patch) throws JsonPatchException, JsonProcessingException;
 
+    @Operation(summary = "Update all product parameters corresponding to ID past.")
     @PutMapping("/{id}")
     Product updateAll(@PathVariable(name = "id") Long id, @RequestBody ProductRequestDto dto);
 
+    @Operation(summary = "Deletes the product corresponding to the ID retrieved by the parameter")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void delete(@PathVariable("id") Long id);
