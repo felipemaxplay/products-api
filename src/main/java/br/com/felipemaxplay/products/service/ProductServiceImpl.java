@@ -47,11 +47,6 @@ public class ProductServiceImpl  implements ProductService {
     }
 
     @Override
-    public List<Product> findAll() {
-        return productRepository.findAll();
-    }
-
-    @Override
     public Page<Product> findAllPageable(Pageable pageable) {
         return productRepository.findAll(pageable);
     }

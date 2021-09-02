@@ -15,7 +15,5 @@ public interface ProductService {
 
     void delete(Long id);
 
-    List<Product> findAll();
-
     Page<Product> findAllPageable(Pageable pageable);
 }
