@@ -2,10 +2,12 @@ package br.com.felipemaxplay.products.service;
 
 import br.com.felipemaxplay.products.model.Product;
 import br.com.felipemaxplay.products.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.NoResultException;
+import java.util.List;
 
 @Service
 public class ProductServiceImpl  implements ProductService {
@@ -44,4 +46,13 @@ public class ProductServiceImpl  implements ProductService {
         productRepository.deleteById(id);
     }
 
+    @Override
+    public List<Product> findAll() {
+        return productRepository.findAll();
+    }
+
+    @Override
+    public Page<Product> findAllPageable(Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
 }

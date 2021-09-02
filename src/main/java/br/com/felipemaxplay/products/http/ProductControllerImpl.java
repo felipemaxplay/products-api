@@ -11,6 +11,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +39,7 @@ public class ProductControllerImpl implements ProductController {
     }
 
     @Override
-    @GetMapping(path ="/{id}")
+    @GetMapping("/{id}")
     public Product readOne(@PathVariable(name = "id") Long id) {
         return productService.readOne(id);
     }
@@ -71,4 +75,9 @@ public class ProductControllerImpl implements ProductController {
         productService.delete(id);
     }
 
+    @GetMapping("")
+    @ResponseStatus(HttpStatus.OK)
+    public Page<Product> findAllPageable(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        return productService.findAllPageable(pageable);
+    }
 }

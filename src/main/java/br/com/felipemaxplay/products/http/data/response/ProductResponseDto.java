@@ -4,12 +4,17 @@ import java.math.BigDecimal;
 
 public class ProductResponseDto {
 
+    private Long id;
     private String name;
     private BigDecimal price;
     private String description;
 
     @Deprecated
     public ProductResponseDto() {
+    }
+
+    public Long getId(){
+        return id;
     }
 
     public String getName() {
