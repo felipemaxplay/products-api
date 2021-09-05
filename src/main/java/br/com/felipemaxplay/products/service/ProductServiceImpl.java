@@ -7,7 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.NoResultException;
-import java.util.List;
 
 @Service
 public class ProductServiceImpl  implements ProductService {
@@ -26,6 +25,7 @@ public class ProductServiceImpl  implements ProductService {
 
     @Override
     public Product readOne(Long id) {
+        System.out.println("Sem Cache");
         return productRepository.findById(id)
                 .orElseThrow(() -> new NoResultException(String.format("Product with ID %d not found", id)));
     }

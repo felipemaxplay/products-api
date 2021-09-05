@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchException;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -40,6 +41,7 @@ public class ProductControllerImpl implements ProductController {
 
     @Override
     @GetMapping("/{id}")
+    @Cacheable("products")
     public Product readOne(@PathVariable(name = "id") Long id) {
         return productService.readOne(id);
     }
