@@ -25,7 +25,6 @@ public class ProductServiceImpl  implements ProductService {
 
     @Override
     public Product readOne(Long id) {
-        System.out.println("Sem Cache");
         return productRepository.findById(id)
                 .orElseThrow(() -> new NoResultException(String.format("Product with ID %d not found", id)));
     }
