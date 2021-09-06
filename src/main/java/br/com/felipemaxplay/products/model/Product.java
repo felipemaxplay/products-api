@@ -3,12 +3,13 @@ package br.com.felipemaxplay.products.model;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
 @Table(name = "PRODUCTS")
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
